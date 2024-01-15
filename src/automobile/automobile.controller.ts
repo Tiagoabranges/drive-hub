@@ -10,7 +10,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { AutomobileService } from './automobile.service';
-import { Automobile } from '@prisma/client';
+import { Automobile } from './entities/automobile.entity';
 
 @Controller('automobile')
 export class AutomobileController {
