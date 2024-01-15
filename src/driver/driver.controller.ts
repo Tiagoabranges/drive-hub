@@ -1,5 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Post,
+  Body,
+  Put,
+  Delete,
+} from '@nestjs/common';
 import { DriverService } from './driver.service';
+import { Driver } from './entities/driver.entity';
 import { CreateDriverDto } from './dto/create-driver.dto';
 import { UpdateDriverDto } from './dto/update-driver.dto';
 
@@ -7,28 +16,31 @@ import { UpdateDriverDto } from './dto/update-driver.dto';
 export class DriverController {
   constructor(private readonly driverService: DriverService) {}
 
-  @Post()
-  create(@Body() createDriverDto: CreateDriverDto) {
-    return this.driverService.create(createDriverDto);
+  @Get(':id')
+  getDriver(@Param('id') id: string): Promise<Driver> {
+    return this.driverService.getDriverById(Number(id));
   }
 
   @Get()
-  findAll() {
-    return this.driverService.findAll();
+  getAllDrivers(): Promise<Driver[]> {
+    return this.driverService.getAllDrivers();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.driverService.findOne(+id);
+  @Post()
+  createDriver(@Body() data: CreateDriverDto): Promise<Driver> {
+    return this.driverService.createDriver(data);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateDriverDto: UpdateDriverDto) {
-    return this.driverService.update(+id, updateDriverDto);
+  @Put(':id')
+  updateDriver(
+    @Param('id') id: string,
+    @Body() data: UpdateDriverDto,
+  ): Promise<Driver> {
+    return this.driverService.updateDriver(Number(id), data);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.driverService.remove(+id);
+  deleteDriver(@Param('id') id: string): Promise<void> {
+    return this.driverService.deleteDriver(Number(id));
   }
 }
