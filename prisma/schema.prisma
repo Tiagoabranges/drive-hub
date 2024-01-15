@@ -10,8 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// prisma/schema.prisma
-
 model Automobile {
   id           Int               @id @default(autoincrement())
   licensePlate String
@@ -20,21 +18,11 @@ model Automobile {
   usages       AutomobileUsage[]
 }
 
-// prisma/schema.prisma
-
-// prisma/schema.prisma
-
-// prisma/schema.prisma
-
 model User {
   id               Int               @id @default(autoincrement())
   name             String
   automobileUsages AutomobileUsage[]
 }
-
-// prisma/schema.prisma
-
-// prisma/schema.prisma
 
 model AutomobileUsage {
   id           Int        @id @default(autoincrement())
