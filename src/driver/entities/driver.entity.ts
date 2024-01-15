@@ -1,1 +1,4 @@
-export class Driver {}
+export class Driver {
+  id: number;
+  name: string;
+}

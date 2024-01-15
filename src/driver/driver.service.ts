@@ -1,26 +1,50 @@
-import { Injectable } from '@nestjs/common';
+// src/driver/driver.service.ts
+
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from 'src/prisma.service';
+import { Driver } from './entities/driver.entity';
 import { CreateDriverDto } from './dto/create-driver.dto';
 import { UpdateDriverDto } from './dto/update-driver.dto';
 
 @Injectable()
 export class DriverService {
-  create(createDriverDto: CreateDriverDto) {
-    return 'This action adds a new driver';
+  constructor(private readonly prisma: PrismaService) {}
+
+  async getDriverById(id: number): Promise<Driver> {
+    const driver = await this.prisma.user.findUnique({ where: { id } });
+
+    if (!driver) {
+      throw new NotFoundException(`Driver with ID ${id} not found`);
+    }
+
+    return driver;
   }
 
-  findAll() {
-    return `This action returns all driver`;
+  async getAllDrivers(): Promise<Driver[]> {
+    return this.prisma.user.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} driver`;
+  async createDriver(data: CreateDriverDto): Promise<Driver> {
+    return this.prisma.user.create({ data });
   }
 
-  update(id: number, updateDriverDto: UpdateDriverDto) {
-    return `This action updates a #${id} driver`;
+  async updateDriver(id: number, data: UpdateDriverDto): Promise<Driver> {
+    const existingDriver = await this.prisma.user.findUnique({ where: { id } });
+
+    if (!existingDriver) {
+      throw new NotFoundException(`Driver with ID ${id} not found`);
+    }
+
+    return this.prisma.user.update({ where: { id }, data });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} driver`;
+  async deleteDriver(id: number): Promise<void> {
+    const existingDriver = await this.prisma.user.findUnique({ where: { id } });
+
+    if (!existingDriver) {
+      throw new NotFoundException(`Driver with ID ${id} not found`);
+    }
+
+    await this.prisma.user.delete({ where: { id } });
   }
 }
