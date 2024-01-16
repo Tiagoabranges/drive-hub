@@ -1,73 +1,84 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 🚗 Controle de Utilização de Automóveis - Teste Técnico Prático 🚗
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto é uma implementação prática de um sistema de controle de utilização de automóveis, desenvolvido como parte de um teste técnico. A aplicação foi construída utilizando as seguintes tecnologias: NestJS, Node.js, Express, Docker (Postgres), Prisma, TypeScript e Jest para testes unitários.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Funcionalidades
 
-## Description
+### Cadastro de Automóvel
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **Cadastrar um novo automóvel**
+  - Rota: POST /automobile
+  - Body: { "plate": "ABC1234", "color": "blue", "brand": "Toyota" }
 
-## Installation
+- **Atualizar um automóvel cadastrado**
+  - Rota: PUT /automobile/:id
+  - Body: { "color": "red" }
 
-```bash
-$ npm install
-```
+- **Excluir um automóvel cadastrado**
+  - Rota: DELETE /automobile/:id
 
-## Running the app
+- **Recuperar um automóvel pelo identificador único**
+  - Rota: GET /automobile/:id
 
-```bash
-# development
-$ npm run start
+- **Listar automóveis cadastrados**
+  - Rota: GET /automobile
 
-# watch mode
-$ npm run start:dev
+- **Filtrar listagem de automóveis por cor e marca**
+  - Rota: GET /automobile?color=blue&brand=Toyota
 
-# production mode
-$ npm run start:prod
-```
+### Cadastro de Motoristas
 
-## Test
+- **Cadastrar um novo motorista**
+  - Rota: POST /driver
+  - Body: { "name": "John Doe" }
 
-```bash
-# unit tests
-$ npm run test
+- **Atualizar um motorista cadastrado**
+  - Rota: PUT /driver/:id
+  - Body: { "name": "Jane Doe" }
 
-# e2e tests
-$ npm run test:e2e
+- **Excluir um motorista cadastrado**
+  - Rota: DELETE /driver/:id
 
-# test coverage
-$ npm run test:cov
-```
+- **Recuperar um motorista pelo identificador único**
+  - Rota: GET /driver/:id
 
-## Support
+- **Listar motoristas cadastrados**
+  - Rota: GET /driver
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- **Filtrar listagem de motoristas por nome**
+  - Rota: GET /driver?name=John
 
-## Stay in touch
+### Utilização de Automóvel
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- **Criar um registro de utilização de um automóvel por um motorista**
+  - Rota: POST /automobile-usage
+  - Body: { "driverId": 1, "automobileId": 2, "usageReason": "Viagem de negócios" }
 
-## License
+- **Finalizar a utilização de um automóvel por um motorista**
+  - Rota: PUT /automobile-usage/:id/finish
 
-Nest is [MIT licensed](LICENSE).
+- **Listar os registros de utilização cadastrados no sistema**
+  - Rota: GET /automobile-usage
+
+## Regras de Negócio
+
+- Um automóvel só pode ser utilizado por um motorista por vez.
+- Um motorista que já esteja utilizando um automóvel não pode utilizar outro automóvel ao mesmo tempo.
+
+## Execução do Projeto
+
+- Clone este repositório.
+- Instale as dependências utilizando `npm install`.
+- Execute a aplicação utilizando `npm start`.
+- Acesse a documentação da API em [http://localhost:3000/api](http://localhost:3000/api).
+
+## Testes Unitários
+
+- Execute os testes unitários utilizando `npm test`.
+
+## Observações
+
+- Este projeto utiliza o Docker para executar o banco de dados Postgres em um container. Certifique-se de ter o Docker instalado.
+- A persistência em memória foi implementada utilizando o Prisma para simplificar o teste e execução do projeto.
+- O prazo para resolução do teste é de 3 dias, mas a qualidade do código e a cobertura de funcionalidades serão avaliadas independentemente do tempo de entrega.
+- Agradecemos pelo seu tempo, participação e boa sorte! Em caso de dúvidas ou sugestões, entre em contato conosco.
