@@ -47,9 +47,8 @@ Execute o contêiner do postgres:
 
 Altere os dados do banco postgres no arquivo `.env` e remova a extensao example: 'postgresql://postgres:mysecretpassword@localhost:5432/postgres?schema=public'
 
-  1. `$ cd backend`
-  2. `$ npm install`
-  3. `$ npm run start:dev`
+  1. `$ npm install`
+  2. `$ npm run start:dev`
 
 ```
 
