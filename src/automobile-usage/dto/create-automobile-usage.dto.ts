@@ -1,7 +1,17 @@
+// create-automobile-usage.dto.ts
+
+import { IsNotEmpty, IsString, IsInt } from 'class-validator';
+
 export class CreateAutomobileUsageDto {
-  startDate?: Date;
-  endDate?: Date;
-  driver?: number;
-  automobile?: number;
-  reason?: string;
+  @IsNotEmpty()
+  @IsInt()
+  readonly driverId: number;
+
+  @IsNotEmpty()
+  @IsInt()
+  readonly automobileId: number;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly usageReason: string;
 }

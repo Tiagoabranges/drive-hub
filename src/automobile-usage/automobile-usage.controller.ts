@@ -1,4 +1,4 @@
-// src/automobile-usage/automobile-usage.controller.ts
+// automobile-usage.controller.ts
 
 import {
   Controller,
@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { AutomobileUsageService } from './automobile-usage.service';
 import { AutomobileUsage } from './entities/automobile-usage.entity';
-import { Prisma } from '@prisma/client';
+import { CreateAutomobileUsageDto } from './dto/create-automobile-usage.dto';
 
 @Controller('automobile-usage')
 export class AutomobileUsageController {
@@ -19,32 +19,31 @@ export class AutomobileUsageController {
     private readonly automobileUsageService: AutomobileUsageService,
   ) {}
 
-  @Get(':id')
-  async getAutomobileUsage(@Param('id') id: string): Promise<AutomobileUsage> {
-    return this.automobileUsageService.getAutomobileUsageById(Number(id));
-  }
-
-  @Get()
+  @Get('usage')
   async getAllAutomobileUsages(): Promise<AutomobileUsage[]> {
     return this.automobileUsageService.getAllAutomobileUsages();
   }
 
-  @Post()
+  @Post('usage')
   async createAutomobileUsage(
-    @Body() data: Prisma.AutomobileUsageCreateInput,
+    @Body() data: CreateAutomobileUsageDto,
   ): Promise<AutomobileUsage> {
-    return this.automobileUsageService.createAutomobileUsage(data);
+    // Ajuste para não incluir startDate no objeto enviado ao serviço
+    return this.automobileUsageService.createAutomobileUsage({
+      automobileId: data.automobileId,
+      driverId: data.driverId,
+      usageReason: data.usageReason,
+    });
   }
 
-  @Put(':id')
-  async updateAutomobileUsage(
+  @Put('usage/:id/finish')
+  async finishAutomobileUsage(
     @Param('id') id: string,
-    @Body() data: AutomobileUsage,
   ): Promise<AutomobileUsage> {
-    return this.automobileUsageService.updateAutomobileUsage(Number(id), data);
+    return this.automobileUsageService.finishAutomobileUsage(Number(id));
   }
 
-  @Delete(':id')
+  @Delete('usage/:id')
   async deleteAutomobileUsage(@Param('id') id: string): Promise<void> {
     return this.automobileUsageService.deleteAutomobileUsage(Number(id));
   }
