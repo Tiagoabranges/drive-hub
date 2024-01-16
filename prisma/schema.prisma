@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,7 +9,7 @@ datasource db {
 
 model Automobile {
   id           Int               @id @default(autoincrement())
-  licensePlate String
+  licensePlate String            @unique
   color        String
   brand        String
   usages       AutomobileUsage[]
@@ -28,11 +25,11 @@ model AutomobileUsage {
   id           Int        @id @default(autoincrement())
   startDate    DateTime
   endDate      DateTime?
-  driver       User       @relation(fields: [driverId], references: [id])
   driverId     Int
-  automobile   Automobile @relation(fields: [automobileId], references: [id])
   automobileId Int
   usageReason  String
+  automobile   Automobile @relation(fields: [automobileId], references: [id])
+  driver       User       @relation(fields: [driverId], references: [id])
 
   @@unique([driverId, endDate])
 }
