@@ -8,6 +8,7 @@ import {
   Body,
   Put,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AutomobileService } from './automobile.service';
 import { Automobile } from './entities/automobile.entity';
@@ -16,6 +17,14 @@ import { Automobile } from './entities/automobile.entity';
 export class AutomobileController {
   constructor(private readonly automobileService: AutomobileService) {}
 
+  @Get('filtered')
+  async getFilteredAutomobiles(
+    @Query('color') color?: string,
+    @Query('brand') brand?: string,
+  ): Promise<Automobile[]> {
+    const filters = { color, brand };
+    return this.automobileService.getFilteredAutomobiles(filters);
+  }
   @Get(':id')
   async getAutomobile(@Param('id') id: string): Promise<Automobile> {
     return this.automobileService.getAutomobileById(Number(id));
