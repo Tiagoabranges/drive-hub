@@ -45,7 +45,7 @@ Execute o contêiner do postgres:
 - `$ npx prisma migrate dev`
 
 ```
-### Rodadndo o projeto 🖥️
+### Rodando o projeto 🖥️
 ```bash
 
 Altere os dados do banco postgres no arquivo `.env` e remova a extensao example: 'postgresql://postgres:mysecretpassword@localhost:5432/postgres?schema=public'
