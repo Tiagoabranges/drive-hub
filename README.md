@@ -69,10 +69,10 @@ Altere os dados do banco postgres no arquivo `.env` e remova a extensao example:
 - `Prisma` ORM (Object-Relational Mapping) para Node.js e TypeScript.
 - `TypeScript` Superset para JavaScript que adiciona tipagem estática opcional.
 - `Jest` Framework de teste JavaScript com foco na simplicidade.
-+ `ESLint` Ferramenta para padronizar o estilo de código JavaScript/TypeScript.
-+ `Git` Sistema de controle de versão para rastreamento de alterações de código.
-+ `Prettier` Ferramenta para manter um estilo de código consistente e bem formatado.
-+ `Insomnia` Ferramenta de cliente REST API que serve para testar, depurar e documentar APIs.
+- `ESLint` Ferramenta para padronizar o estilo de código JavaScript/TypeScript.
+- `Git` Sistema de controle de versão para rastreamento de alterações de código.
+- `Prettier` Ferramenta para manter um estilo de código consistente e bem formatado.
+- `Insomnia` Ferramenta de cliente REST API que serve para testar, depurar e documentar APIs.
 
   
 #  :thumbsup: Contribuições
