@@ -6,6 +6,7 @@ import {
   Body,
   Put,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { DriverService } from './driver.service';
 import { Driver } from './entities/driver.entity';
@@ -15,6 +16,14 @@ import { UpdateDriverDto } from './dto/update-driver.dto';
 @Controller('driver')
 export class DriverController {
   constructor(private readonly driverService: DriverService) {}
+
+  @Get('filtered')
+  async getFilteredAutomobiles(
+    @Query('name') name?: string,
+  ): Promise<Driver[]> {
+    const filters = { name };
+    return this.driverService.getFilteredAutomobiles(filters);
+  }
 
   @Get(':id')
   getDriver(@Param('id') id: string): Promise<Driver> {

@@ -1,7 +1,7 @@
 // src/driver/driver.service.ts
 
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from '../prisma.service';
 import { Driver } from './entities/driver.entity';
 import { CreateDriverDto } from './dto/create-driver.dto';
 import { UpdateDriverDto } from './dto/update-driver.dto';
@@ -18,6 +18,24 @@ export class DriverService {
     }
 
     return driver;
+  }
+  async getFilteredAutomobiles(filters: { name?: string }): Promise<Driver[]> {
+    // Lógica para obter automóveis filtrados com base nos parâmetros
+    // Se ambos os filtros forem fornecidos, aplique ambos
+    // Se apenas um filtro for fornecido, aplique apenas esse filtro
+    // Se nenhum filtro for fornecido, retorne todos os automóveis
+
+    const whereCondition: { name?: string } = {};
+
+    if (filters.name) {
+      whereCondition.name = filters.name;
+    }
+
+    console.log('Where Condition:', whereCondition);
+
+    return this.prisma.user.findMany({
+      where: whereCondition,
+    });
   }
 
   async getAllDrivers(): Promise<Driver[]> {
