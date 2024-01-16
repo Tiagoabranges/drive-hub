@@ -36,12 +36,15 @@ Para mais informações e uma visão mais detalhada do projeto, consulte a <a hr
 Baixe a imagem do postgres:
  `$ docker pull postgres`
 
-
-
 Execute o contêiner do postgres:
   `$ docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres`
 
 ````
+### Aplicar Migrações
+```bash
+- `$ npx prisma migrate dev`
+
+```
 ### Back end 🖥️
 ```bash
 
