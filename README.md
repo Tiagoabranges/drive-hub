@@ -69,8 +69,8 @@ Este projeto é uma implementação prática de um sistema de controle de utiliz
 
 - Clone este repositório.
 - Instale as dependências utilizando `npm install`.
-- Execute a aplicação utilizando `npm start`.
-- Acesse a documentação da API em [http://localhost:3000/api](http://localhost:3000/api).
+- Execute a aplicação utilizando `npm run start:dev`.
+- Acesse a API em [http://localhost:3000/api](http://localhost:3000/api).
 
 ## Testes Unitários
 
@@ -79,6 +79,8 @@ Este projeto é uma implementação prática de um sistema de controle de utiliz
 ## Observações
 
 - Este projeto utiliza o Docker para executar o banco de dados Postgres em um container. Certifique-se de ter o Docker instalado.
+- 1 `docker pull postgres`
+- 2 `docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres`
 - A persistência em memória foi implementada utilizando o Prisma para simplificar o teste e execução do projeto.
 - O prazo para resolução do teste é de 3 dias, mas a qualidade do código e a cobertura de funcionalidades serão avaliadas independentemente do tempo de entrega.
 - Agradecemos pelo seu tempo, participação e boa sorte! Em caso de dúvidas ou sugestões, entre em contato conosco.
