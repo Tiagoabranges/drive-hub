@@ -11,8 +11,6 @@ async function bootstrap() {
       'Sistema para controlar a utilização de automóveis por motoristas.',
     )
     .setVersion('0.1')
-    .addTag('automobiles')
-    .addTag('drivers')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
