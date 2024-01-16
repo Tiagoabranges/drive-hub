@@ -14,7 +14,6 @@ O DriveHub é um sistema robusto de controle de utilização de automóveis, des
 
 - **Filtragem e Listagem**: Utilize filtros para buscar e visualizar dados específicos, proporcionando uma visão clara da frota e dos motoristas.
 
- - pode ver mais sobre como funciona nos links a seguir
 ## Documentação Adicional 📚
 
 Para mais informações e uma visão mais detalhada do projeto, consulte a <a href="https://www.notion.so/Drive-hub-53ab02842f0d4574b3f3f0f69caf386c?pvs=4" target="_blank">Documentação no Notion</a>
