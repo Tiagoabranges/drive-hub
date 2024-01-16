@@ -1,69 +1,24 @@
-# 🚗 Controle de Utilização de Automóveis - Teste Técnico Prático 🚗
+# 🚗 DriveHub 🚗
 
-Este projeto é uma implementação prática de um sistema de controle de utilização de automóveis, desenvolvido como parte de um teste técnico. A aplicação foi construída utilizando as seguintes tecnologias: NestJS, Node.js, Express, Docker (Postgres), Prisma, TypeScript e Jest para testes unitários.
+O DriveHub é um sistema robusto de controle de utilização de automóveis, desenvolvido para otimizar e simplificar a gestão de frotas e motoristas.
 
-## Funcionalidades
+## Funcionalidades Principais 🚀
 
-### Cadastro de Automóvel
+- **Cadastro de Automóveis**: Registre novos automóveis com informações detalhadas, como placa, cor e marca.
 
-- **Cadastrar um novo automóvel**
-  - Rota: POST /automobile
-  - Body: { "plate": "ABC1234", "color": "blue", "brand": "Toyota" }
+- **Cadastro de Motoristas**: Adicione motoristas à base de dados, incluindo seus nomes.
 
-- **Atualizar um automóvel cadastrado**
-  - Rota: PUT /automobile/:id
-  - Body: { "color": "red" }
+- **Utilização de Automóvel**: Crie registros de utilização, indicando qual motorista está utilizando qual automóvel e a razão dessa utilização.
 
-- **Excluir um automóvel cadastrado**
-  - Rota: DELETE /automobile/:id
+- **Atualização e Exclusão**: Atualize informações de automóveis e motoristas, além de excluir registros obsoletos.
 
-- **Recuperar um automóvel pelo identificador único**
-  - Rota: GET /automobile/:id
+- **Filtragem e Listagem**: Utilize filtros para buscar e visualizar dados específicos, proporcionando uma visão clara da frota e dos motoristas.
 
-- **Listar automóveis cadastrados**
-  - Rota: GET /automobile
+ - pode ver mais sobre como funciona nos links a seguir
+## Documentação Adicional 📚
 
-- **Filtrar listagem de automóveis por cor e marca**
-  - Rota: GET /automobile?color=blue&brand=Toyota
+Para mais informações e uma visão mais detalhada do projeto, consulte a <a href="https://www.notion.so/Drive-hub-53ab02842f0d4574b3f3f0f69caf386c?pvs=4" target="_blank">Documentação no Notion</a>
 
-### Cadastro de Motoristas
-
-- **Cadastrar um novo motorista**
-  - Rota: POST /driver
-  - Body: { "name": "John Doe" }
-
-- **Atualizar um motorista cadastrado**
-  - Rota: PUT /driver/:id
-  - Body: { "name": "Jane Doe" }
-
-- **Excluir um motorista cadastrado**
-  - Rota: DELETE /driver/:id
-
-- **Recuperar um motorista pelo identificador único**
-  - Rota: GET /driver/:id
-
-- **Listar motoristas cadastrados**
-  - Rota: GET /driver
-
-- **Filtrar listagem de motoristas por nome**
-  - Rota: GET /driver?name=John
-
-### Utilização de Automóvel
-
-- **Criar um registro de utilização de um automóvel por um motorista**
-  - Rota: POST /automobile-usage
-  - Body: { "driverId": 1, "automobileId": 2, "usageReason": "Viagem de negócios" }
-
-- **Finalizar a utilização de um automóvel por um motorista**
-  - Rota: PUT /automobile-usage/:id/finish
-
-- **Listar os registros de utilização cadastrados no sistema**
-  - Rota: GET /automobile-usage
-
-## Regras de Negócio
-
-- Um automóvel só pode ser utilizado por um motorista por vez.
-- Um motorista que já esteja utilizando um automóvel não pode utilizar outro automóvel ao mesmo tempo.
 
 ## Execução do Projeto
 # 🚀 Como executar o projeto
@@ -104,11 +59,32 @@ Altere os dados do banco postgres no arquivo `.env` e remova a extensao example:
 
 - Execute os testes unitários utilizando `npm test`.
 
-## Observações
+# :books: Tecnologias Utilizadas
+ 
+- `NestJS` Framework para construção de aplicativos server-side eficientes e escaláveis em Node.js.
+- `Node.js` Ambiente de execução JavaScript server-side.
+- `Express` Framework web para Node.js.
+- `Docker` Plataforma para desenvolvimento, envio e execução de aplicativos em containers.
+- `Postgres` Banco de dados relacional utilizado para armazenar dados do projeto.
+- `Prisma` ORM (Object-Relational Mapping) para Node.js e TypeScript.
+- `TypeScript` Superset para JavaScript que adiciona tipagem estática opcional.
+- `Jest` Framework de teste JavaScript com foco na simplicidade.
++ `ESLint` Ferramenta para padronizar o estilo de código JavaScript/TypeScript.
++ `Git` Sistema de controle de versão para rastreamento de alterações de código.
++ `Prettier` Ferramenta para manter um estilo de código consistente e bem formatado.
++ `Insomnia` Ferramenta de cliente REST API que serve para testar, depurar e documentar APIs.
 
-- Este projeto utiliza o Docker para executar o banco de dados Postgres em um container. Certifique-se de ter o Docker instalado.
-- 1 `docker pull postgres`
-- 2 
-- A persistência em memória foi implementada utilizando o Prisma para simplificar o teste e execução do projeto.
-- O prazo para resolução do teste é de 3 dias, mas a qualidade do código e a cobertura de funcionalidades serão avaliadas independentemente do tempo de entrega.
-- Agradecemos pelo seu tempo, participação e boa sorte! Em caso de dúvidas ou sugestões, entre em contato conosco.
+  
+#  :thumbsup: Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para criar issues, pull requests ou sugerir melhorias para este projeto.
+
+# 🐛 Encontrou um problema?
+Se você encontrar algum problema, por favor me avise [aqui](https://www.linkedin.com/in/tiagoabranges/).
+
+
+# 📝 Licença
+Desenvolvido por [Tiago Abranges](https://www.linkedin.com/in/tiagoabranges/).
+
+Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para criar um fork do projeto e enviar pull requests
+
