@@ -66,10 +66,38 @@ Este projeto é uma implementação prática de um sistema de controle de utiliz
 - Um motorista que já esteja utilizando um automóvel não pode utilizar outro automóvel ao mesmo tempo.
 
 ## Execução do Projeto
+# 🚀 Como executar o projeto
 
-- Clone este repositório.
-- Instale as dependências utilizando `npm install`.
-- Execute a aplicação utilizando `npm run start:dev`.
+```bash
+ - Primeiro clone o repositório:
+    - ``` git@github.com:Tiagoabranges/drive-hub.git ```
+ - Entre no repositório: 
+   - ``` cd drive-hub ```
+````
+
+### Utilizando o docker 🐳
+[Instale o Docker:]( https://docs.docker.com/get-docker/)
+```bash
+Baixe a imagem do postgres:
+ `$ docker pull postgres`
+
+
+
+Execute o contêiner do MongoDB:
+  `$ docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres`
+
+````
+### Back end 🖥️
+```bash
+
+Altere os dados do banco postgres no arquivo `.env` e remova a extensao example: 'postgresql://postgres:mysecretpassword@localhost:5432/postgres?schema=public'
+
+  1. `$ cd backend`
+  2. `$ npm install`
+  3. `$ npm run start:dev`
+
+```
+
 - Acesse a API em [http://localhost:3000/api](http://localhost:3000/api).
 
 ## Testes Unitários
@@ -80,7 +108,7 @@ Este projeto é uma implementação prática de um sistema de controle de utiliz
 
 - Este projeto utiliza o Docker para executar o banco de dados Postgres em um container. Certifique-se de ter o Docker instalado.
 - 1 `docker pull postgres`
-- 2 `docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres`
+- 2 
 - A persistência em memória foi implementada utilizando o Prisma para simplificar o teste e execução do projeto.
 - O prazo para resolução do teste é de 3 dias, mas a qualidade do código e a cobertura de funcionalidades serão avaliadas independentemente do tempo de entrega.
 - Agradecemos pelo seu tempo, participação e boa sorte! Em caso de dúvidas ou sugestões, entre em contato conosco.
