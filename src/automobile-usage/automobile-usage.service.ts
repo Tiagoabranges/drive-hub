@@ -23,7 +23,7 @@ export class AutomobileUsageService {
     const isCarInUse = await this.prismaService.automobileUsage.findFirst({
       where: {
         automobileId: data.automobileId,
-        endDate: null, // Verifica se não há data de término, ou seja, o carro está em uso
+        endDate: null,
       },
     });
 
@@ -33,10 +33,9 @@ export class AutomobileUsageService {
       );
     }
 
-    // Mapeia o DTO para o formato esperado pelo Prisma
     const prismaData: Prisma.AutomobileUsageCreateInput = {
       startDate: new Date(),
-      endDate: null, // Inicialmente, não há data de término
+      endDate: null,
       automobile: {
         connect: {
           id: data.automobileId,
@@ -48,7 +47,6 @@ export class AutomobileUsageService {
         },
       },
       usageReason: data.usageReason,
-      // Adicione outros campos conforme necessário
     };
 
     try {
@@ -58,8 +56,6 @@ export class AutomobileUsageService {
 
       return result;
     } catch (error) {
-      // Se ocorrer um erro ao criar, você pode personalizar a mensagem de erro conforme necessário
-      // Aqui, estamos ajustando a mensagem de erro para que seja mais adequada ao formato JSON esperado pelo Insomnia
       throw new NotFoundException({
         statusCode: 404,
         message: error.message,
@@ -92,7 +88,6 @@ export class AutomobileUsageService {
       throw new NotFoundException(`AutomobileUsage with ID ${id} not found`);
     }
 
-    // Atualiza a data de término ao finalizar o uso
     return this.prismaService.automobileUsage.update({
       where: { id },
       data: {

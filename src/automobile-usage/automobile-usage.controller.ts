@@ -1,5 +1,3 @@
-// automobile-usage.controller.ts
-
 import {
   Controller,
   Get,
@@ -28,7 +26,6 @@ export class AutomobileUsageController {
   async createAutomobileUsage(
     @Body() data: CreateAutomobileUsageDto,
   ): Promise<AutomobileUsage> {
-    // Ajuste para não incluir startDate no objeto enviado ao serviço
     return this.automobileUsageService.createAutomobileUsage({
       automobileId: data.automobileId,
       driverId: data.driverId,

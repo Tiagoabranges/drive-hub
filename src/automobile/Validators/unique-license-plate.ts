@@ -1,5 +1,3 @@
-// src/automobile/validators/unique-license-plate.validator.ts
-
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 

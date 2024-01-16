@@ -1,5 +1,3 @@
-// src/automobile/automobile.controller.ts
-
 import {
   Controller,
   Get,

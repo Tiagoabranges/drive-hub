@@ -1,12 +1,9 @@
-// Importe as interfaces e classes relevantes
 import { Test, TestingModule } from '@nestjs/testing';
 import { AutomobileController } from '../automobile.controller';
 import { AutomobileService } from '../automobile.service';
 import { Automobile } from '../entities/automobile.entity';
-import { NotFoundException, ConflictException } from '@nestjs/common';
-import { PrismaService } from '../../prisma.service'; // Importe o PrismaService
+import { PrismaService } from '../../prisma.service';
 
-// Função para gerar um mock genérico de Automobile
 const generateMockAutomobile = (id: number): Automobile => ({
   id,
   brand: 'DefaultBrand',
@@ -21,7 +18,7 @@ describe('AutomobileController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AutomobileController],
-      providers: [AutomobileService, PrismaService], // Adicione o PrismaService aqui
+      providers: [AutomobileService, PrismaService],
     }).compile();
 
     automobileController =
@@ -33,7 +30,7 @@ describe('AutomobileController', () => {
     it('should return filtered automobiles', async () => {
       const mockAutomobiles: Automobile[] = [generateMockAutomobile(1)];
       jest
-        .spyOn(automobileService, 'getFilteredAutomobiles' as any) // Forçando o tipo any aqui
+        .spyOn(automobileService, 'getFilteredAutomobiles' as any)
         .mockResolvedValue(mockAutomobiles);
 
       const result = await automobileController.getFilteredAutomobiles(
@@ -49,7 +46,7 @@ describe('AutomobileController', () => {
     it('should return an automobile by ID', async () => {
       const mockAutomobile: Automobile = generateMockAutomobile(1);
       jest
-        .spyOn(automobileService, 'getAutomobileById' as any) // Forçando o tipo any aqui
+        .spyOn(automobileService, 'getAutomobileById' as any)
         .mockResolvedValue(mockAutomobile);
 
       const result = await automobileController.getAutomobile('1');
@@ -57,6 +54,4 @@ describe('AutomobileController', () => {
       expect(result).toEqual(mockAutomobile);
     });
   });
-
-  // Restante dos testes utilizando a mesma abordagem para criar objetos mock.
 });

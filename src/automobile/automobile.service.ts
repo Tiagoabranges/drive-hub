@@ -35,7 +35,7 @@ export class AutomobileService {
     if (filters.color) {
       whereCondition.color = {
         contains: filters.color,
-        mode: 'insensitive', // Isso torna a comparação insensível a maiúsculas/minúsculas
+        mode: 'insensitive',
       };
     }
 
@@ -71,10 +71,9 @@ export class AutomobileService {
         error.code === 'P2002' &&
         error.meta?.target?.includes('licensePlate')
       ) {
-        // Verificar se o erro é de violação de restrição única para a placa
         throw new ConflictException('License plate already in use');
       }
-      // Se não for um erro relacionado à restrição única, rejeitar normalmente
+
       throw error;
     }
   }

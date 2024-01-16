@@ -1,5 +1,3 @@
-// create-automobile-usage.dto.ts
-
 import { IsNotEmpty, IsString, IsInt } from 'class-validator';
 
 export class CreateAutomobileUsageDto {
