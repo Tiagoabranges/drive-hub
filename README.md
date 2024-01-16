@@ -69,7 +69,7 @@ Altere os dados do banco postgres no arquivo `.env` e remova a extensao example:
 - `Git` Sistema de controle de versão para rastreamento de alterações de código.
 - `Prettier` Ferramenta para manter um estilo de código consistente e bem formatado.
 - `Insomnia` Ferramenta de cliente REST API que serve para testar, depurar e documentar APIs.
-- 
+  
 ## Documentação Adicional 📚
 
 Para mais informações e uma visão mais detalhada do projeto, consulte a <a href="https://www.notion.so/Drive-hub-53ab02842f0d4574b3f3f0f69caf386c?pvs=4" target="_blank">Documentação no Notion</a>
